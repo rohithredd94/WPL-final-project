@@ -14,7 +14,10 @@ app.config(['$routeProvider', function($routeProvider){
             templateUrl: 'partials/login.html',
             //controller: 'HomeCtrl'
         })
-
+        .when('/main', {
+            templateUrl: 'partials/main.html',
+            //controller: 'MainCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });
