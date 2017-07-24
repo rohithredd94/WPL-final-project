@@ -23,12 +23,21 @@ app.config(['$routeProvider', function($routeProvider){
         });
 }]);
 
-app.controller('LoginCtrl', ['$scope', '$resource', 
-    function($scope, $resource){
+app.controller('LoginCtrl', ['$scope', '$resource','$location', 
+    function($scope, $resource, $location){
         console.log("Inside controller");
-        var Users = $resource('/api/users');
+        /*var Users = $resource('/api/users');
         Users.query(function(users){
             $scope.users = users;
-        });
+        });*/
+        $scope.save = function(){
+            console.log("Inside Save");
+            var Users = $resource('/api/users');
+            Users.save($scope.user, function(){
+                $location.path('/main');
+            });
+            console.log($scope.user.email);
+
+        };
     }
 ]);

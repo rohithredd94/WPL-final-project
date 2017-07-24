@@ -15,19 +15,19 @@
                 <!--Body-->
                 <div class="md-form">
                     <i class="fa fa-envelope prefix"></i>
-                    <input type="text" id="form2" class="form-control">
+                    <input type="text" id="form2" class="form-control" ng-model="user.email">
                     <label for="form2">Your email</label>
                 </div>
 
                 <p ng-controller="LoginCtrl">{{users[0]._id}}</p>
                 <div class="md-form">
                     <i class="fa fa-lock prefix"></i>
-                    <input type="password" id="form4" class="form-control">
+                    <input type="password" id="form4" class="form-control" ng-model="user.password">
                     <label for="form4">Your password</label>
                 </div>
 
                 <div class="text-center">
-                    <button class="btn btn-primary btn-lg">Login</button>
+                    <button class="btn btn-primary btn-lg" ng-click="save()">Login</button>
                 </div>
 
             </div>

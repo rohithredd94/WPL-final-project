@@ -14,4 +14,23 @@ router.get('/', function(req, res) {
     });
 });
 
+router.post('/', function(req, res){
+    var collection = db.get('users');
+    console.log(req.body);
+    /*collection.insert({
+        title: req.body.title,
+        description: req.body.description
+    }, function(err, video){
+        if (err) throw err;
+
+        res.json(video);
+    });*/
+    collection.findOne({name:req.body.email, password: req.body.password}, function(err, user){
+        if(err) throw err;
+
+        res.redirect("/#/main");
+    });
+    console.log("Inside login-auth-post");
+});
+
 module.exports = router;
