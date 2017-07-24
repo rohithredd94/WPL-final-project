@@ -1,4 +1,4 @@
-var app = angular.module('MoviesRating', ['ngRoute']);
+var app = angular.module('MoviesRating', ['ngResource','ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider){
     $routeProvider
@@ -12,7 +12,7 @@ app.config(['$routeProvider', function($routeProvider){
         })
         .when('/login', {
             templateUrl: 'partials/login.html',
-            //controller: 'HomeCtrl'
+            controller: 'LoginCtrl'
         })
         .when('/main', {
             templateUrl: 'partials/main.html',
@@ -23,3 +23,12 @@ app.config(['$routeProvider', function($routeProvider){
         });
 }]);
 
+app.controller('LoginCtrl', ['$scope', '$resource', 
+    function($scope, $resource){
+        console.log("Inside controller");
+        var Users = $resource('/api/users');
+        Users.query(function(users){
+            $scope.users = users;
+        });
+    }
+]);
